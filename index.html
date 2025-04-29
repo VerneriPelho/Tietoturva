@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-toggle-screen" id="admin-toggle">
+        <button class="admin-toggle-screen" onclick="toggleAdmin()">🔑 Admin</button>
+    </div>
+
+    <div class="login-container" id="main-login">
+        <h2>Kirjaudu tilillesi</h2>
+        <input type="text" id="loginUsername" placeholder="Käyttäjätunnus tai sähköposti" />
+        <div class="password-container">
+            <input type="password" id="loginPassword" placeholder="Salasana" />
+            <span class="toggle-password" onclick="togglePassword('loginPassword')">👁</span>
+        </div>
+        <button onclick="loginUser()">Kirjaudu sisään</button>
+        <p class="register-link">
+            Eikö sinulla ole tiliä? <a href="#" onclick="showRegisterForm()">Rekisteröidy</a>
+        </p>
+        <p id="message" style="margin-top: 10px;"></p>
+    </div>
+
+    <div class="login-container" id="register-form" style="display: none;">
+        <button class="admin-toggle" onclick="showLoginForm()">🔙 Takaisin</button>
+        <h2>Luo uusi tili</h2>
+        <input type="text" id="registerUsername" placeholder="Käyttäjätunnus" />
+        <input type="email" id="registerEmail" placeholder="Sähköpostiosoite" />
+        <div class="password-container">
+            <input type="password" id="registerPassword" placeholder="Salasana" />
+            <span class="toggle-password" onclick="togglePassword('registerPassword')">👁</span>
+        </div>
+        <button onclick="registerUser()">Rekisteröidy</button>
+        <p id="registerMessage" style="margin-top: 10px;"></p>
+    </div>
+
+    <div class="login-container" id="admin-login" style="display: none;">
+        <button class="admin-toggle" onclick="toggleAdmin()">🔙 Takaisin</button>
+        <h2>Admin Kirjautuminen</h2>
+        <div class="password-container">
+            <input type="password" id="adminPassword" placeholder="Admin salasana" />
+            <span class="toggle-password" onclick="togglePassword('adminPassword')">👁</span>
+        </div>
+        <button onclick="checkAdminPassword()">Kirjaudu adminiksi</button>
+        <p id="adminMessage" style="color: #ff6b6b; margin-top: 10px;"></p>
+    </div>
+
+    <div class="admin-panel" id="admin-panel" style="display: none;">
+        <div class="admin-header">
+            <h2>Admin Panel</h2>
+            <button class="logout-btn" onclick="logoutAdmin()">Kirjaudu ulos</button>
+        </div>
+        <div class="accounts-list">
+            <h3>Rekisteröityneet käyttäjät</h3>
+            <div class="search-container">
+                <input type="text" id="searchUsers" placeholder="Etsi käyttäjiä..." oninput="filterUsers()" />
+            </div>
+            <div class="table-container">
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Käyttäjätunnus</th>
+                            <th>Sähköposti</th>
+                            <th>Toiminnot</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersList"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="user-panel" id="user-panel" style="display: none;">
+        <div class="user-header">
+            <h2>Tervetuloa <span id="welcomeUsername"></span>!</h2>
+            <button class="logout-btn" onclick="logoutUser()">Kirjaudu ulos</button>
+        </div>
+        <div class="user-content">
+            <p>Tervetuloa yksityiselle sivullesi! Tämä sisältö on näkyvissä vain kirjautuneille käyttäjille.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

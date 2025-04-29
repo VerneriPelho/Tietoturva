@@ -1,0 +1,18 @@
+{
+  "ok": {
+    "email": "ok@gmail.com",
+    "password": "$2b$10$O4KNojJoKPavt1nxGY9PK.7TADBF71aAxelhyI.wV8qKMmT8JMb1m"
+  },
+  "okei": {
+    "email": "okei@gmail.com",
+    "password": "$2b$10$Mmj.TWstvbRn0rxK1VkadeKak8fLdSsVcevlCuz4fBzF2.OgziymS"
+  },
+  "perkele": {
+    "email": "perkele@gmail.com",
+    "password": "$2b$10$.f5LKGi6A7amcL/EBGpV7.4geVD7/7RIMV4oCI7nEUuylVwClIz8i"
+  },
+  "ko": {
+    "email": "6a9ed2b062616c09c41669b7ceb874aa:6ac510a13ce78a7f34752f8d0f35ceb2",
+    "password": "$2b$10$eSISHe7z19EuMbsUPdLSlu.VlFRdOLmme3MAjeBmmTytUKaALoLE."
+  }
+}

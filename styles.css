@@ -1,0 +1,257 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d0b1f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.admin-toggle-screen {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    background: transparent;
+    color: #a97cff;
+    border: 2px solid #a97cff;
+    padding: 8px 40px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 100;
+    text-decoration: none;
+}
+
+.admin-toggle-screen:hover {
+    background: rgba(169, 124, 255, 0.1);
+    color: white;
+    border-color: white;
+}
+
+.login-container {
+    background-color: #1a1233;
+    padding: 40px 30px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(105, 61, 255, 0.3);
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+input {
+    width: calc(100% - 24px);
+    padding: 14px 12px;
+    margin: 12px 0;
+    border: 2px solid #693dff;
+    border-radius: 8px;
+    background: #1a1233;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #a97cff;
+    box-shadow: 0 0 10px rgba(169, 124, 255, 0.5);
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #a97cff;
+    font-size: 18px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background-color: #693dff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #a97cff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(169, 124, 255, 0.4);
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #a97cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.admin-toggle {
+    background: transparent;
+    color: #a97cff;
+    border: 2px solid #a97cff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    line-height: 1;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.admin-toggle:hover {
+    background: rgba(169, 124, 255, 0.1);
+    color: white;
+    border-color: white;
+}
+
+.admin-panel {
+    width: 650px;
+    display: none;
+    background-color: #1a1233;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(105, 61, 255, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.admin-header h2 {
+    margin: 0;
+    color: #a97cff;
+    font-size: 22px;
+}
+
+.logout-btn {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #ff4757;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.logout-btn:hover {
+    background-color: #ff6b81;
+}
+
+.accounts-list h3 {
+    color: #a97cff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 2px solid #693dff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1233;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #693dff;
+}
+
+th {
+    background-color: #693dff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+tr:hover {
+    background-color: #241a4a;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #3498db;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#message,
+#adminMessage,
+#registerMessage {
+    margin-top: 15px;
+    font-size: 14px;
+    min-height: 20px;
+    text-align: center;
+}
+

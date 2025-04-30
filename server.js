@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables from .env
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -11,12 +11,12 @@ const encryptionKey = process.env.ENCRYPTION_KEY;
 console.log("Encryption Key:", encryptionKey);
 
 // Salausasetukset
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY; // ⚠️  Store this securely!
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY; 
 const IV_LENGTH = 16;
 
 if (!ENCRYPTION_KEY) {
     console.error('ERROR: ENCRYPTION_KEY is not defined in .env!');
-    process.exit(1); // Exit if the key is missing
+    process.exit(1);
 }
 
 function encryptEmail(email) {
@@ -25,7 +25,7 @@ function encryptEmail(email) {
         'aes-256-cbc',
         Buffer.from(ENCRYPTION_KEY, 'hex'),
         iv
-    );  // Use Buffer for the key
+    );  
     let encrypted = cipher.update(email, 'utf8', 'hex');
     encrypted += cipher.final('hex');
     return iv.toString('hex') + ':' + encrypted;
@@ -40,23 +40,23 @@ function decryptEmail(encryptedEmail) {
             'aes-256-cbc',
             Buffer.from(ENCRYPTION_KEY, 'hex'),
             iv
-        );  // Use Buffer for the key
+        ); 
         let decrypted = decipher.update(encryptedText, 'hex', 'utf8');
         decrypted += decipher.final('utf8');
         return decrypted.toString();
     } catch (error) {
         console.error('Decryption error:', error);
-        return null; // Or throw an error, depending on your needs
+        return null; 
     }
 }
 
 // Session setup
 app.use(
     session({
-        secret: 'your-secret-key', // Replace with a strong, random key
+        secret: 'your-secret-key', 
         resave: false,
         saveUninitialized: true,
-        cookie: { secure: false }, // Set to true in production if using HTTPS
+        cookie: { secure: false }, 
     })
 );
 
@@ -65,7 +65,6 @@ app.use(express.json());
 
 const USERS_FILE = path.join(__dirname, 'users.json');
 
-// Middleware admin-tilan tarkistamiseen
 function isAdmin(req, res, next) {
     if (req.session.isAdmin) {
         next();
@@ -90,7 +89,7 @@ function saveUsers(users) {
     fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf8');
 }
 
-// Tarkista todennus
+// todennus
 app.get('/check-auth', (req, res) => {
     res.json({
         loggedInUser: req.session.loggedInUser,
@@ -152,18 +151,15 @@ app.post('/admin-logout', (req, res) => {
     res.sendStatus(200);
 });
 
-// Hae kaikki käyttäjät (vain admin)
 app.get('/users', isAdmin, (req, res) => {
     const users = loadUsers();
     const filteredUsers = {};
     for (const username in users) {
         const decryptedEmail = decryptEmail(users[username].email);
-        if (decryptedEmail) { // Only add if decryption was successful
+        if (decryptedEmail) { 
             filteredUsers[username] = { email: decryptedEmail };
         } else {
             console.warn(`Could not decrypt email for user: ${username}`);
-            // Optionally, you might want to handle this case differently,
-            // such as skipping the user or returning an error to the client.
         }
     }
     res.json(filteredUsers);
@@ -188,7 +184,7 @@ app.put('/users/:username', isAdmin, (req, res) => {
         return res.status(404).send('Käyttäjää ei löydy!');
     }
 
-    users[username].email = encryptEmail(email); // Salaa päivitetty sähköposti
+    users[username].email = encryptEmail(email);
     saveUsers(users);
     res.send('Sähköposti päivitetty!');
 });
